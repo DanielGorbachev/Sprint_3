@@ -10,9 +10,9 @@ my_password = "123456"
 @pytest.fixture()
 def open_site():
     driver = webdriver.Chrome()
-    driver.get("https://stellarburgers.nomoreparties.site/")
+    driver.get(Locators.site_url)
     WebDriverWait(driver, 10).until(
-        expected_conditions.presence_of_element_located((By.XPATH, "html/body/div/div/header")))
+        expected_conditions.presence_of_element_located(Locators.header_assemble_burger))
     yield driver
     driver.quit()
 
@@ -26,5 +26,4 @@ def authenticated_session(open_site):
     open_site.find_element(*Locators.password_field).send_keys(my_password)
     open_site.find_element(*Locators.to_log_in_new).click()
     WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
-
-    yield open_site
+    return

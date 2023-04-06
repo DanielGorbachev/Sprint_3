@@ -64,3 +64,5 @@ class Locators:
     constructor_btn = (By.XPATH, "//p[contains(text(),'Конструктор')]")
     # Оглавление "Соберите бургер"
     header_assemble_burger = (By.XPATH, "//h1[contains(text(),'Соберите бургер')]")
+    # URL главной страницы сайта
+    site_url = "https://stellarburgers.nomoreparties.site/"
