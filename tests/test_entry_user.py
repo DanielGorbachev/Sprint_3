@@ -1,55 +1,59 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+
+
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from Locators import Locators
 
+my_mail = "Daniil_Gorbachev_08_888@yandex.ru"
+my_password = "123456"
+
 
 class TestUserLogIn:
-    def test_login_from_main_page_positive_result(self, open_site, my_mail, my_password):
-        open_site.find_element(*Locators.ENTER_ACC).click()
-        # WebDriverWait(driver, 5).until(expected_conditions.presence_of_element_located(Locators.TO_LOG_IN))
+    def test_login_from_main_page_positive_result(self, open_site):
+        open_site.find_element(*Locators.enter_acc).click()
 
-        open_site.find_element(*Locators.EMAIL_FIELD).send_keys(my_mail)
-        open_site.find_element(*Locators.PASSWORD_FIELD).send_keys(my_password)
-        open_site.find_element(*Locators.TO_LOG_IN).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.PLACE_ORDER))
+        open_site.find_element(*Locators.email_field).send_keys(my_mail)
+        open_site.find_element(*Locators.password_field).send_keys(my_password)
+        open_site.find_element(*Locators.to_log_in_new).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
 
-        assert open_site.find_element(*Locators.PLACE_ORDER).text == "Оформить заказ"
+        assert open_site.find_element(*Locators.place_order_new).text == "Оформить заказ"
 
-    def test_login_from_personal_cabinet_positive_result(self, open_site, my_mail, my_password):
-        open_site.find_element(*Locators.CABINET).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.TO_LOG_IN))
+    def test_login_from_personal_cabinet_positive_result(self, open_site):
+        open_site.find_element(*Locators.cabinet).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.to_log_in_new))
 
-        open_site.find_element(*Locators.EMAIL_FIELD).send_keys(my_mail)
-        open_site.find_element(*Locators.PASSWORD_FIELD).send_keys(my_password)
-        open_site.find_element(*Locators.TO_LOG_IN).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.PLACE_ORDER))
+        open_site.find_element(*Locators.email_field).send_keys(my_mail)
+        open_site.find_element(*Locators.password_field).send_keys(my_password)
+        open_site.find_element(*Locators.to_log_in_new).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
 
-        assert open_site.find_element(*Locators.PLACE_ORDER).text == "Оформить заказ"
+        assert open_site.find_element(*Locators.place_order_new).text == "Оформить заказ"
 
-    def test_login_from_registration_page_positive_result(self, open_site, my_mail, my_password):
-        open_site.find_element(*Locators.CABINET).click()
-        open_site.find_element(*Locators.TO_REGISTER).click()
-        open_site.find_element(By.XPATH, "//a[contains(text(),'Войти')]").click()
+    def test_login_from_registration_page_positive_result(self, open_site):
+        open_site.find_element(*Locators.cabinet).click()
+        open_site.find_element(*Locators.to_register_new).click()
+        open_site.find_element(*Locators.to_login_href).click()
 
-        open_site.find_element(*Locators.EMAIL_FIELD).send_keys(my_mail)
-        open_site.find_element(*Locators.PASSWORD_FIELD).send_keys(my_password)
-        open_site.find_element(*Locators.TO_LOG_IN).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.PLACE_ORDER))
+        open_site.find_element(*Locators.email_field).send_keys(my_mail)
+        open_site.find_element(*Locators.password_field).send_keys(my_password)
+        open_site.find_element(*Locators.to_log_in_new).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
 
-        assert open_site.find_element(*Locators.PLACE_ORDER).text == "Оформить заказ"
+        assert open_site.find_element(*Locators.place_order_new).text == "Оформить заказ"
 
-    def test_login_from_password_recovery_page_positive_result(self, open_site, my_mail, my_password):
-        open_site.find_element(*Locators.ENTER_ACC).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.TO_LOG_IN))
+    def test_login_from_password_recovery_page_positive_result(self, open_site):
+        open_site.find_element(*Locators.enter_acc).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.to_log_in_new))
 
-        open_site.find_element(By.XPATH, "//a[contains(text(),'Восстановить пароль')]").click()
-        open_site.find_element(By.XPATH, "//a[contains(text(),'Войти')]").click()
 
-        open_site.find_element(*Locators.EMAIL_FIELD).send_keys(my_mail)
-        open_site.find_element(*Locators.PASSWORD_FIELD).send_keys(my_password)
-        open_site.find_element(*Locators.TO_LOG_IN).click()
-        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.PLACE_ORDER))
 
-        assert open_site.find_element(*Locators.PLACE_ORDER).text == "Оформить заказ"
+        open_site.find_element(*Locators.recover_password).click()
+        open_site.find_element(*Locators.to_login_href).click()
+
+        open_site.find_element(*Locators.email_field).send_keys(my_mail)
+        open_site.find_element(*Locators.password_field).send_keys(my_password)
+        open_site.find_element(*Locators.to_log_in_new).click()
+        WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
+
+        assert open_site.find_element(*Locators.place_order_new).text == "Оформить заказ"

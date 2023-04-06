@@ -1,14 +1,13 @@
 import pytest
-import random
-import string
 from Locators import Locators
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-
-@pytest.fixture()       # открытие главной страницы сайты
+my_mail = "Daniil_Gorbachev_08_888@yandex.ru"
+my_password = "123456"
+@pytest.fixture()
 def open_site():
     driver = webdriver.Chrome()
     driver.get("https://stellarburgers.nomoreparties.site/")
@@ -18,39 +17,14 @@ def open_site():
     driver.quit()
 
 
-@pytest.fixture()     # цикл входа на сайт
-def authenticated_session(open_site, my_password, my_mail):
-    open_site.find_element(*Locators.ENTER_ACC).click()
-    WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.TO_LOG_IN))
+@pytest.fixture()
+def authenticated_session(open_site):
+    open_site.find_element(*Locators.enter_acc).click()
+    WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.to_log_in_new))
 
-    open_site.find_element(*Locators.EMAIL_FIELD).send_keys(my_mail)
-    open_site.find_element(*Locators.PASSWORD_FIELD).send_keys(my_password)
-    open_site.find_element(*Locators.TO_LOG_IN).click()
-    WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.PLACE_ORDER))
+    open_site.find_element(*Locators.email_field).send_keys(my_mail)
+    open_site.find_element(*Locators.password_field).send_keys(my_password)
+    open_site.find_element(*Locators.to_log_in_new).click()
+    WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
 
     yield open_site
-
-    open_site.quit()
-
-
-@pytest.fixture      # генерация случайной почты
-def new_mail():
-    mail_rand = f"Daniil_Gorbachev_08_{random.randint(100, 999)}@ya.ru"
-    return mail_rand
-
-
-@pytest.fixture      # рандомный пароль из 6 символов
-def new_password():
-    letters_and_digits = string.ascii_letters + string.digits
-    rand_string = ''.join(random.sample(letters_and_digits, 6))
-    return rand_string
-
-
-@pytest.fixture    # мой логин
-def my_mail():
-    return "Daniil_Gorbachev_08_888@yandex.ru"
-
-
-@pytest.fixture    # мой пароль
-def my_password():
-    return 123456
