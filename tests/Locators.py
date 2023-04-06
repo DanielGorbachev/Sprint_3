@@ -66,3 +66,5 @@ class Locators:
     header_assemble_burger = (By.XPATH, "//h1[contains(text(),'Соберите бургер')]")
     # URL главной страницы сайта
     site_url = "https://stellarburgers.nomoreparties.site/"
+    # Ошибка "Некорректный пароль"
+    wrong_password = (By.XPATH, "//p[contains(text(),'Некорректный пароль')]")

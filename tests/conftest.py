@@ -15,15 +15,12 @@ def open_site():
         expected_conditions.presence_of_element_located(Locators.header_assemble_burger))
     yield driver
     driver.quit()
-
-
 @pytest.fixture()
 def authenticated_session(open_site):
     open_site.find_element(*Locators.enter_acc).click()
     WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.to_log_in_new))
-
     open_site.find_element(*Locators.email_field).send_keys(my_mail)
     open_site.find_element(*Locators.password_field).send_keys(my_password)
     open_site.find_element(*Locators.to_log_in_new).click()
     WebDriverWait(open_site, 5).until(expected_conditions.presence_of_element_located(Locators.place_order_new))
-    return
+    return open_site
