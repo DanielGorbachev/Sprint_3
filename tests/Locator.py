@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class Locators:
+class Locator:
 
     # поле для ввода email'а
     email_field = (By.XPATH, "//input[@name = 'name']")
