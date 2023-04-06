@@ -53,5 +53,22 @@ class Locators:
     # кнопка "войти", работающая как гиперссылка
     to_login_href = (By.XPATH, "//a[contains(text(),'Войти')]")
 
-    # КОПКА зарегистрироваться
+    # КНОПКА зарегистрироваться
     to_register = (By.XPATH, "//button[contains(text(),'Зарегистрироваться')]")
+
+    # Поле ввода имени
+    enter_name_field = (By.XPATH, ".//fieldset[1]/div/div/input")
+    # Поле ввода почты
+    enter_mail_field = (By.XPATH, ".//fieldset[2]/div/div/input")
+    # Поле ввода пароля
+    enter_password_field = (By.XPATH, ".//fieldset[3]/div/div/input")
+    # Заголовок с надписью ВХОД
+    header_enter = (By.XPATH, "//h2[contains(text(),'Вход')]")
+    # Кнопка "выход"
+    exit_btn = (By.XPATH, "//button[contains(text(),'Выход')]")
+    # Кнопка "история заказов"
+    order_history_btn = (By.XPATH, "//a[contains(text(),'История заказов')]")
+    # Кнопка "Конструктор"
+    constructor_btn = (By.XPATH, "//p[contains(text(),'Конструктор')]")
+    # Оглавление "Соберите бургер"
+    header_assemble_burger = (By.XPATH, "//h1[contains(text(),'Соберите бургер')]")

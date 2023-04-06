@@ -10,9 +10,9 @@ class TestLogOut:
         WebDriverWait(authenticated_session, 10).until(expected_conditions.presence_of_element_located(
             Locators.my_login_field_new
         ))
-        authenticated_session.find_element(By.XPATH, "//button[contains(text(),'Выход')]").click()
+        authenticated_session.find_element(*Locators.exit_btn).click()
         WebDriverWait(authenticated_session, 10).until(expected_conditions.presence_of_element_located(
             Locators.to_log_in_new
         ))
-        element = authenticated_session.find_element(By.XPATH, "//h2[contains(text(),'Вход')]")
+        element = authenticated_session.find_element(*Locators.header_enter)
         assert element is not None

@@ -11,12 +11,12 @@ class TestNavigationTabs:
             Locators.my_login_field_new
         ))
 
-        element = authenticated_session.find_element(By.XPATH, "//*[contains(text(), 'История заказов')]")
+        element = authenticated_session.find_element(*Locators.order_history_btn)
         assert element is not None
 
     def test_open_tab_konstruktor_from_personal_cabinet_positive_result(self, authenticated_session):
         authenticated_session.find_element(*Locators.cabinet).click()
-        authenticated_session.find_element(By.XPATH, "//*[contains(text(), 'Конструктор')]").click()
+        authenticated_session.find_element(*Locators.constructor_btn).click()
 
-        element = authenticated_session.find_element(By.XPATH, "//*[contains(text(), 'Соберите бургер')]")
+        element = authenticated_session.find_element(*Locators.header_assemble_burger)
         assert element is not None
