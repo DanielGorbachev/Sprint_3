@@ -7,27 +7,21 @@ class Locators:
     email_field = (By.XPATH, "//input[@name = 'name']")
 
     # поле ввода пароля
-    password_field = (By.CSS_SELECTOR, ".text[name='Пароль']")
+    password_field = (By.XPATH, "//input[@name = 'Пароль']")
 
     # кнопка "личный кабинет"
     cabinet = (By.XPATH, "//p[contains(text(),'Личный Кабинет')]")
 
-    # кнопка "Войти"
-    to_log_in = (By.XPATH, "/html/body/div[1]/div/main/div/form/button[text()='Войти']")
-
     # кнопка "войти в аккаунт"
     enter_acc = (By.XPATH, "//button[contains(text(),'Войти в аккаунт')]")
 
-    # кнопка "Зарегистрироваться" на странице входа
-
-
     # кнопка "Оформить заказ"
-    place_order = (By.XPATH, "/html/body/div/div/main/section/div/button")
+    place_order = (By.XPATH, "//button[contains(text(),'Оформить заказ')]")
 
     # поле с логином в кабинете после входа на сайт
-    my_login_field = (By.XPATH, "/html/body/div/div/main/div/div/div/ul/li/div/div/input")
+    my_login_field = (By.XPATH, "//label[contains(text(),'Логин')]")
 
-    # ПЕРЕХОД НА РОДИТЕЛЯ ДЛЯ НАДПИСЕЙ КОЛЛЕКТОРА ДЛЯ ПРОВЕРКИ ИХ ВЫБОРА
+    # ПЕРЕХОД НА РОДИТЕЛЯ НАДПИСЕЙ КОЛЛЕКТОРА ДЛЯ ПРОВЕРКИ ИХ ВЫБОРА
     # булки
     buns = (By.XPATH, "//span[contains(text(),'Булки')]/parent::div")
     # соусы
@@ -60,8 +54,6 @@ class Locators:
     enter_name_field = (By.XPATH, ".//fieldset[1]/div/div/input")
     # Поле ввода почты
     enter_mail_field = (By.XPATH, ".//fieldset[2]/div/div/input")
-    # Поле ввода пароля
-    enter_password_field = (By.XPATH, ".//fieldset[3]/div/div/input")
     # Заголовок с надписью ВХОД
     header_enter = (By.XPATH, "//h2[contains(text(),'Вход')]")
     # Кнопка "выход"
